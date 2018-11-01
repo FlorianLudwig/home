@@ -1,0 +1,33 @@
+- hosts: home-assistant
+  become: true
+  tasks:
+  - name: copy HA config
+    synchronize:
+      src: home-assistant/
+      dest: /etc/home-assistant/
+  - name: copy app-daemon config
+    synchronize:
+      src: app-daemon/
+      dest: /etc/app-daemon/
+
+  - name: home assistant docker container
+    docker_container:
+      name: "home-assistant"
+      state: started
+      restart_policy: always
+      image: homeassistant/raspberrypi3-homeassistant:0.81.2
+      volumes:
+        - /etc/home-assistant:/config
+        - /etc/localtime:/etc/localtime:ro
+      network_mode: host
+
+  - name: appdaemon docker container
+    docker_container:
+      name: "appdaemon"
+      state: started
+      restart_policy: always
+      image: test
+      volumes:
+        - /etc/app-daemon:/conf
+        - /etc/localtime:/etc/localtime:ro
+      network_mode: host
