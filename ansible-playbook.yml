@@ -19,6 +19,8 @@
       volumes:
         - /etc/home-assistant:/config
         - /etc/localtime:/etc/localtime:ro
+      devices:
+        - /dev/ttyAMA0
       network_mode: host
 
   - name: appdaemon docker container
