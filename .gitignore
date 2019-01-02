@@ -2,3 +2,5 @@
 app-daemon/secrets.yaml
 home-assistant/secrets.yaml
 home-assistant/.tradfri_psk.conf
+
+ansible-playbook.retry
