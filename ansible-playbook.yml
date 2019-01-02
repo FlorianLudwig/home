@@ -15,7 +15,7 @@
       name: "home-assistant"
       state: started
       restart_policy: always
-      image: homeassistant/raspberrypi3-homeassistant:0.81.2
+      image: homeassistant/raspberrypi3-homeassistant:0.84.6
       volumes:
         - /etc/home-assistant:/config
         - /etc/localtime:/etc/localtime:ro
