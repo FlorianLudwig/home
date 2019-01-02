@@ -4,3 +4,8 @@ home-assistant/secrets.yaml
 home-assistant/.tradfri_psk.conf
 
 ansible-playbook.retry
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
