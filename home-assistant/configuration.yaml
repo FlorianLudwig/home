@@ -35,6 +35,12 @@ sensor:
 # Cloud
 cloud:
 
+
+
+zha:
+ usb_path: /dev/ttyAMA0
+ database_path: zigbee.db
+ baudrate: 57600
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
