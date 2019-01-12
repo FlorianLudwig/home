@@ -22,6 +22,7 @@
       devices:
         - /dev/ttyAMA0
       network_mode: host
+      restart: true
 
   - name: appdaemon docker container
     docker_container:
@@ -33,3 +34,4 @@
         - /etc/app-daemon:/conf
         - /etc/localtime:/etc/localtime:ro
       network_mode: host
+      restart: true
