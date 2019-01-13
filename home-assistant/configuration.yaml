@@ -12,6 +12,10 @@ homeassistant:
   time_zone: Europe/Berlin
   # Customization file
   customize: !include customize.yaml
+
+  auth_providers:
+   - type: homeassistant
+
 # Enables the frontend
 frontend:
 
