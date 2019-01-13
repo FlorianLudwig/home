@@ -37,6 +37,12 @@ device_tracker:
     username: !secret google_maps_username
     password: !secret google_maps_password
 
+
+
+# Text to speech
+tts:
+  - platform: google
+
 # Cloud
 cloud:
 
