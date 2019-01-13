@@ -32,6 +32,11 @@ sun:
 # Weather prediction
 sensor:
   - platform: yr
+device_tracker:
+  - platform: google_maps
+    username: !secret google_maps_username
+    password: !secret google_maps_password
+
 # Cloud
 cloud:
 
