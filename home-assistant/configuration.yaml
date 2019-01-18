@@ -38,6 +38,8 @@ weather:
   - platform: met
 
 sensor:
+  - platform: miflora
+    mac: !secret mac_miflora
 device_tracker:
   - platform: google_maps
     username: !secret google_maps_username
