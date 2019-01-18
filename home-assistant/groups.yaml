@@ -1,0 +1,44 @@
+
+people_status:
+  name: People Status
+  entities:
+    - sensor.florian_status
+
+
+bedroom_lights:
+  name: Bedroom lights
+  icon: mdi:lightbulb
+  entities:
+    - light.b1
+    - light.b2
+    - light.b3
+    - light.b4
+
+
+livingroom_lights:
+  name: Livingroom lights
+  icon: mdi:lightbulb
+  entities:
+    - group.livingroom_spots
+    - group.livingroom_rgb_lights
+
+
+livingroom_spots:
+  name: Livingroom spots
+  icon: mdi:lightbulb
+  entities:
+    - light.lc_0
+    - light.lc_1
+    - light.lc_2
+    - light.lc_3
+    - light.lc_4
+    - light.lc_5
+
+
+livingroom_rgb_lights:
+  name: Livingroom rgb lights
+  icon: mdi:lightbulb
+  entities:
+    - light.lrgb_0
+    - light.lrgb_1
+    - light.lrgb_2
