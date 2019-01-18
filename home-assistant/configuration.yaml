@@ -34,8 +34,10 @@ logbook:
 sun:
 
 # Weather prediction
+weather:
+  - platform: met
+
 sensor:
-  - platform: yr
 device_tracker:
   - platform: google_maps
     username: !secret google_maps_username
