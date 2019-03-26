@@ -9,6 +9,20 @@ bedroom_lights:
     - light.b4
 
 
+bathroom_lights:
+  name: Bathroom lights
+  icon: mdi:lightbubl
+  entities:
+    - light.t1   
+    - light.t2
+    - light.t3
+    - light.t4
+    - light.t5
+    - light.t6
+    - light.t7
+    - light.t8
+
+
 livingroom_lights:
   name: Livingroom lights
   icon: mdi:lightbulb
