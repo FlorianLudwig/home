@@ -63,6 +63,24 @@ tts:
 cloud:
 
 
+recorder:
+  purge_keep_days: 7
+  purge_interval: 1
+  exclude:
+    domains:
+      - sun
+      - media_player
+      - updater
+
+    entities:
+      - sensor.o2_homebox_2_6741_packets_sec_sent
+      - sensor.o2_homebox_2_6741_packets_sec_received
+      - sensor.o2_homebox_2_6741_bytes_sent
+      - sensor.o2_homebox_2_6741_packets_sent
+      - sensor.o2_homebox_2_6741_bytes_received
+      - sensor.o2_homebox_2_6741_packets_received
+
+
 
 zha:
  usb_path: /dev/ttyAMA0
