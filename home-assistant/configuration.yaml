@@ -68,6 +68,8 @@ zha:
  usb_path: /dev/ttyAMA0
  database_path: zigbee.db
  baudrate: 57600
+logger:
+  default: warn
 lovelace:
 group: !include groups.yaml
 automation: !include automations.yaml
