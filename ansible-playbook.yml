@@ -1,6 +1,13 @@
 - hosts: home-assistant
   become: true
   tasks:
+  - name: backup
+    shell: export CONTAINER="home-assistant.$(date --iso-8601=minutes | sed s/[:+]/-/g)" && \
+           docker stop home-assistant && \
+           docker container rename home-assistant $CONTAINER && \
+           docker update --restart=no $CONTAINER && \
+           rsync -a --delete /etc/home-assistant/ /etc/home-assistant.bak/
+
   - name: copy HA config
     synchronize:
       src: home-assistant/
