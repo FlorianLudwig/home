@@ -90,6 +90,31 @@ zha:
  usb_path: /dev/ttyAMA0
  database_path: zigbee.db
  baudrate: 57600
+
+
+input_select:
+  light_mode_livingroom:
+    name: Light Mode
+    options:
+      - "auto"
+      - "manual"
+    icon: mdi:target
+
+  light_mode_bedroom:
+    name: Light Mode
+    options:
+      - "auto"
+      - "manual"
+    icon: mdi:target
+
+  light_mode_bathroom:
+    name: Light Mode
+    options:
+      - "auto"
+      - "manual"
+    icon: mdi:target
+
+
 logger:
   default: warn
 lovelace:
