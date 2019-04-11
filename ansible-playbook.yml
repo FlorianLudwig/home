@@ -1,45 +1,17 @@
 - hosts: home-assistant
-  become: true
+  # become: true
   tasks:
-  - name: backup
-    shell: export CONTAINER="home-assistant.$(date --iso-8601=minutes | sed s/[:+]/-/g)" && \
-           docker stop home-assistant && \
-           docker container rename home-assistant $CONTAINER && \
-           docker update --restart=no $CONTAINER && \
-           rsync -a --delete /etc/home-assistant/ /etc/home-assistant.bak/
 
   - name: copy HA config
     synchronize:
       src: home-assistant/
-      dest: /etc/home-assistant/
+      dest: /root/config/
+      
   - name: copy app-daemon config
     synchronize:
       src: app-daemon/
-      dest: /etc/app-daemon/
+      dest: /root/config/appdaemon/
 
 
-  - name: home assistant docker container
-    docker_container:
-      name: "home-assistant"
-      state: started
-      restart_policy: always
-      image: homeassistant/raspberrypi3-homeassistant:0.90.1
-      volumes:
-        - /etc/home-assistant:/config
-        - /etc/localtime:/etc/localtime:ro
-      devices:
-        - /dev/ttyAMA0
-      network_mode: host
-      restart: true
-
-  - name: appdaemon docker container
-    docker_container:
-      name: "appdaemon"
-      state: started
-      restart_policy: always
-      image: test # appdaemon-rpi3:3.0.2
-      volumes:
-        - /etc/app-daemon:/conf
-        - /etc/localtime:/etc/localtime:ro
-      network_mode: host
-      restart: true
+# restart?
+# hassio homeassistant restart
