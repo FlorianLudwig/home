@@ -1,0 +1,7 @@
+light_color:
+  module: light_color
+  class: LightColor
+
+occupation:
+  module: occupation
+  class: Occupation
