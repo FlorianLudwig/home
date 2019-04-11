@@ -1,0 +1,30 @@
+- platform: group
+  name: Livingroom spots main
+  entities:
+    - light.lc_0
+    - light.lc_1
+    - light.lc_2
+    - light.lc_3
+    - light.lc_4
+    - light.lc_5
+
+
+- platform: group
+  name: Livingroom RGB lights
+  entities:
+    - light.l_rgb_0
+    - light.l_rgb_1
+    - light.l_rgb_2
+
+
+- platform: group
+  name: Bathroom lights
+  entities:
+    - light.t1   
+    - light.t2
+    - light.t3
+    - light.t4
+    - light.t5
+    - light.t6
+    - light.t7
+    - light.t8
