@@ -118,6 +118,9 @@ input_select:
 logger:
   default: warn
 lovelace:
+
+
+cloud: !include cloud.yaml
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml

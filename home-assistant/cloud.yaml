@@ -1,0 +1,24 @@
+google_actions:
+  filter:
+      include_entities:
+      - light.livingroom_spots_main
+      - light.livingroom_rgb_lights
+      - light.bathroom_lights
+      - light.dresser_light
+      - light.hallway_lights
+      - light.globe
+      - light.shelly1_0
+  entity_config:
+      light.livingroom_spots_main:
+        name: Living room spots
+        aliases:
+          - living room main lights
+          - living room main spots
+        room: Living room
+      light.livingroom_rgb_lights:
+        name: RGB lights
+        room: Living room
+      light.bathroom_lights:
+        room: Bathroom
+      light.dresser_light:
+        room: Bedroom
