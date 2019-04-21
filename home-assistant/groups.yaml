@@ -11,7 +11,7 @@ bedroom_lights:
 
 bathroom_lights:
   name: Bathroom lights
-  icon: mdi:lightbubl
+  icon: mdi:lightbulb
   entities:
     - light.t1   
     - light.t2
