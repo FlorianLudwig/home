@@ -70,6 +70,6 @@ livingroom_rgb_lights:
   name: Livingroom rgb lights
   icon: mdi:lightbulb
   entities:
-    - light.lrgb_0
-    - light.lrgb_1
-    - light.lrgb_2
+    - light.l_rgb_0
+    - light.l_rgb_1
+    - light.l_rgb_2

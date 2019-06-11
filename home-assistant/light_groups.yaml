@@ -1,3 +1,4 @@
+# living room
 - platform: group
   name: Livingroom spots main
   entities:
@@ -8,6 +9,12 @@
     - light.lc_4
     - light.lc_5
 
+- platform: group
+  name: Livingroom spots beam
+  entities:
+    - light.beam_1
+    - light.beam_2
+    - light.beam_3
 
 - platform: group
   name: Livingroom RGB lights
@@ -17,10 +24,11 @@
     - light.l_rgb_2
 
 
+# bathroom
 - platform: group
   name: Bathroom lights
   entities:
-    - light.t1   
+    - light.t1
     - light.t2
     - light.t3
     - light.t4
@@ -29,11 +37,11 @@
     - light.t7
     - light.t8
 
-
+# bedroom
 - platform: group
   name: Bedroom lights
   entities:
-    - light.b1   
+    - light.b1
     - light.b2
     - light.b3
     - light.b4
@@ -42,7 +50,7 @@
 - platform: group
   name: Hallway lights
   entities:
-    - light.h1  
+    - light.h1
     - light.h2
     - light.h3
     - light.h4
@@ -50,3 +58,10 @@
     - light.h6
     - light.h7
     - light.h8
+
+
+- platform: group
+  name: Kitchen lights
+  entities:
+    - light.kitchen_counter
+    - light.shelly1_0
