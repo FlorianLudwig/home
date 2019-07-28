@@ -1,24 +1,79 @@
 google_actions:
   filter:
       include_entities:
+      # living room
       - light.livingroom_spots_main
       - light.livingroom_rgb_lights
-      - light.bathroom_lights
-      - light.dresser_light
-      - light.hallway_lights
+      - light.livingroom_spots_beam
       - light.globe
+
+      # kitchen
       - light.shelly1_0
+      - light.kitchen_counter
+
+      # bedroom
+      - light.bedroom_lights
+      - light.dresser_light
+      - light.dresser_lamp
+
+      # bathroom
+      - light.bathroom_lights
+
+      # hallway
+      - light.hallway_lights
+
+      # scripts
+      - script.night_time_script
+
+
   entity_config:
-      light.livingroom_spots_main:
-        name: Living room spots
-        aliases:
-          - living room main lights
-          - living room main spots
-        room: Living room
-      light.livingroom_rgb_lights:
-        name: RGB lights
-        room: Living room
-      light.bathroom_lights:
-        room: Bathroom
-      light.dresser_light:
-        room: Bedroom
+    # living room
+    light.livingroom_spots_main:
+      name: Living room spots
+      aliases:
+        - living room main lights
+        - living room main spots
+      room: Living room
+    light.livingroom_rgb_lights:
+      name: RGB lights
+      room: Living room
+    light.livingroom_spots_beam:
+      room: Living room
+      aliases:
+        - spots over the stairs
+        - spots between the kitchen and the living room
+        - those other three spots
+
+    # bedroom
+    light.bedroom_lights:
+      room: Bedroom
+
+    light.dresser_light:
+      room: Bedroom
+      aliases:
+        - beam spots
+
+    light.dresser_lamp:
+      room: Bedroom
+
+    # bathroom
+    light.bathroom_lights:
+      room: Bathroom
+
+
+    # kitchen
+    light.shelly1_0:
+      aliases:
+        - kitchen main lights
+        - kitchen spots
+      room: Kitchen
+
+    light.kitchen_counter:
+      aliases:
+        - kitchen counter
+        - counter lights
+      room: Kitchen
+
+    # scripts
+    script.night_time_script:
+      name: Night Time Script
