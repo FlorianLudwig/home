@@ -1,0 +1,35 @@
+- name: Night Time
+  entities:
+    # living room
+    light.livingroom_spots_beam: false
+    light.livingroom_spots_main: false
+    light.globe:
+      state: true
+      brightness: 100
+
+    livingroom_rgb_lights:
+      state: true
+      brightness: 100
+      rgb_color: [255,127,0]
+
+    # bedroom
+    light.bedroom_lights: false
+    light.dresser_light:
+      state: true
+      brigntess: 150
+    light.dresser_lamp:
+      state: true
+      brightness: 100
+
+    # hallway
+    light.hallway_lights: false
+
+    # kitchen
+    light.kitchen_counter:
+      state: true
+      brightness: 10
+
+    light.shelly1_0: false
+
+    # turn off music ?
+    # turn off tv
