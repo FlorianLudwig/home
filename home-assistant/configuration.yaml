@@ -21,6 +21,9 @@ frontend:
 
 # Enables configuration UI
 config:
+
+http:
+
 # Checks for available updates
 # Note: This component will send some information about your system to
 # the developers to assist with development of Home Assistant.
@@ -64,8 +67,8 @@ tts:
   - platform: google_translate
 
 
-# Cloud
-cloud:
+tradfri:
+  host: 192.168.1.127
 
 
 recorder:
@@ -115,14 +118,23 @@ input_select:
       - "manual"
     icon: mdi:target
 
+# logger:
+#   default: warn
+#   logs:
+#    homeassistant.components.zha: debug
+#    bellows.ezsp: debug
+#    bellows.uart: debug
+#    zigpy.zdo: debug
+#    zigpy.application: debug
 
-logger:
-  default: warn
+
 lovelace:
 
+system_health:
 
 cloud: !include cloud.yaml
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
 light: !include light_groups.yaml
+scene: !include scene.yaml
