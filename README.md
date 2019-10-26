@@ -6,7 +6,9 @@
 
 Create inventory and run
 ```
-ansible-playbook -i inventory ansible-playbook.yml
+pipenv --python 3
+pipenv install
+pipenv run ansible-playbook -i inventory ansible-playbook.yml
 ```
 
 ### locally via cli (On x64)
