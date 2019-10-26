@@ -1,0 +1,18 @@
+# -- hallway --
+- trigger:
+    platform: state
+    entity_id: binary_sensor.shelly1_1
+    from: 'off'
+    to: 'on'
+  action:
+    service: light.toggle
+    entity_id: "light.hallway_lights"
+
+- trigger:
+    platform: state
+    entity_id: binary_sensor.shelly1_1
+    from: 'on'
+    to: 'off'
+  action:
+    service: light.toggle
+    entity_id: "light.hallway_lights"
