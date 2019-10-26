@@ -1,0 +1,1 @@
+home-assistant ansible_host=hassio.local ansible_user=root ansible_python_interpreter=/usr/bin/python3
