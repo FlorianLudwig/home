@@ -34,9 +34,11 @@ google_actions:
         - living room main lights
         - living room main spots
       room: Living room
+
     light.livingroom_rgb_lights:
       name: RGB lights
       room: Living room
+
     light.livingroom_spots_beam:
       room: Living room
       aliases:
@@ -50,8 +52,6 @@ google_actions:
 
     light.dresser_light:
       room: Bedroom
-      aliases:
-        - beam spots
 
     light.dresser_lamp:
       room: Bedroom
