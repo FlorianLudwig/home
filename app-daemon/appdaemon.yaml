@@ -1,0 +1,14 @@
+log:
+  logfile: STDOUT
+  errorfile: STDERR
+
+appdaemon:
+  threads: 5
+  plugins:
+    HASS:
+      type: hass
+      ha_url: "http://hassio/homeassistant"
+
+
+hadashboard:
+  dash_url: http://hassio.local:5050
