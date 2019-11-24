@@ -7,7 +7,7 @@
       state: true
       brightness: 100
 
-    livingroom_rgb_lights:
+    light.livingroom_rgb_lights:
       state: true
       brightness: 100
       rgb_color: [255,127,0]
