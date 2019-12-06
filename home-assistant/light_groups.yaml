@@ -1,3 +1,6 @@
+# raspberry LEDs
+- platform: raspberry_led
+
 # living room
 - platform: group
   name: Livingroom spots main
