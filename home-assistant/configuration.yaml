@@ -56,6 +56,9 @@ weather:
 wake_on_lan:
 
 sensor:
+  - platform: rpi_power
+    text_state: true
+
   - platform: miflora
     mac: !secret mac_miflora
 device_tracker:
