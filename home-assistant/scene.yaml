@@ -1,4 +1,5 @@
 - name: Night Time
+  id: night_time
   entities:
     # living room
     light.livingroom_spots_beam: false
