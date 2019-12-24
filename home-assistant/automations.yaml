@@ -18,3 +18,90 @@
   action:
     service: light.toggle
     entity_id: "light.hallway_lights"
+
+
+# -- kitchen --
+- id: kitchen_left_up
+  alias: "Kitchen counter lights off -> on"
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: "senic_0"
+      event: 1000
+  action:
+    service: light.turn_on
+    entity_id: "light.kitchen_counter"
+  condition:
+    - condition: state
+      entity_id: "light.kitchen_counter"
+      state: "off"
+
+- id: kitchen_left_up_already_on_bright
+  alias: "Kitchen counter lights bright -> dim"
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: "senic_0"
+      event: 1000
+  action:
+    service: light.turn_on
+    data:
+      entity_id: "light.kitchen_counter"
+      brightness: 1
+  condition:
+    - condition: template
+      value_template: '{{ state_attr("light.kitchen_counter", "brightness") >= 200 }}'
+
+- id: kitchen_left_up_already_on_dark
+  alias: "Kitchen counter lights dim -> bright"
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: "senic_0"
+      event: 1000
+  action:
+    service: light.turn_on
+    data:
+      entity_id: "light.kitchen_counter"
+      brightness: 255
+  condition:
+    - condition: template
+      value_template: '{{ state_attr("light.kitchen_counter", "brightness") < 200 }}'
+
+- id: kitchen_left_down
+  alias: "Kitchen counter lights on -> off"
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: "senic_0"
+      event: 2000
+  action:
+    service: light.turn_off
+    entity_id: "light.kitchen_counter"
+
+- id: kitchen_right_up
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: "senic_0"
+      event: 3000
+  action:
+    service: light.turn_on
+    entity_id: "light.shelly1_0"
+
+- id: kitchen_right_down
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: "senic_0"
+      event: 4000
+  action:
+    service: light.turn_off
+    entity_id: "light.shelly1_0"
+
