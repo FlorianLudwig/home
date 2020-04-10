@@ -53,6 +53,10 @@ sun:
 weather:
   - platform: met
 
+
+mobile_app:
+
+
 wake_on_lan:
 
 sensor:
