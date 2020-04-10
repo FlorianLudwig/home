@@ -33,4 +33,25 @@
     light.shelly1_0: false
 
     # turn off music ?
-    # turn off tv
+    media_player.living_room_tv: false
+
+
+- name: TV
+  id: tv
+  entities:
+    # living room
+    light.livingroom_rgb_lights:
+      state: true
+      brightness: 100
+      rgb_color: [255,127,0]
+
+    # hallway
+    light.hallway_lights: false
+
+    # kitchen
+    light.kitchen_counter: false
+    light.shelly1_0: false
+
+    media_player.living_room_speaker: false
+    media_player.living_room_tv:
+      state: on
