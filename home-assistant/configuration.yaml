@@ -59,6 +59,13 @@ mobile_app:
 
 wake_on_lan:
 
+
+notify:
+
+
+media_player:
+
+
 sensor:
   - platform: rpi_power
     text_state: true
