@@ -3,14 +3,15 @@
 automation:
   - alias: IKEA Remote
     id: 'ikea_remote'
-    mode: restart
+    mode: queued
+    max: 10
     trigger:
       - platform: event
         event_type: zha_event
     action:
       - service: script.zha_exec
         data_template:
-          dim_step: 10
+          dim_step: 50
           color_step: 20
           light: >-
             {% set device_light_list = {
@@ -20,9 +21,73 @@ automation:
           command: "{{ trigger.event.data.command }}"
           args: "{{ trigger.event.data.args }}"
 
+  - alias: IKEA Remote deconz
+    # buttons are mapped to data.event, with the tousander digit beeing the button
+    # and the last digit the press type
+    # button:
+    #  1 = middle
+    #  2 = dim up
+    #  3 = dim down
+    #  4 = left
+    #  5 = right
+    # press type:
+    #  for the ikea remote, deconz does not emit press/release but repeats press (2)
+    id: 'ikea_remote_deconz'
+    mode: queued
+    max: 10
+    trigger:
+      - platform: event
+        event_type: deconz_event
+    action:
+      - service: script.deconz_exec
+        data_template:
+          button: "{{ trigger.event.data.event // 1000 }}"
+          press_type : "{{ trigger.event.data.event % 1000 }}"
+          dim_step: 50
+          color_step: 20
+          light: >-
+            {% set device_light_list = {
+              'd0:cf:5e:ff:fe:f8:16:64': 'light.beam_zha_group_0x0003'
+            } %}
+            {{ device_light_list[trigger.event.data.unique_id] }}
+
+
 script:
+  deconz_exec:
+    sequence:
+      - service: system_log.write
+        data_template:
+          message: "deconz: {{ button }} - {{ press_type }}"
+      - service_template: >-
+          {%- if button in ("2", "3") %}
+            script.zha_remote_short_press_dim
+          {% elif button == "1" %}
+            script.zha_remote_short_press_power
+          {% elif button in ("4", "5") %}
+            script.zha_remote_short_press_dim
+          {% else %}
+            unkown-button
+          {% endif %}
+        data_template:
+          light: "{{ light }}"
+          dim_step: >-
+            {% if button == "3" %}
+              {{ 0 - dim_step }}
+            {% else %}
+              {{ dim_step }}
+            {% endif %}
+          color_step: >-
+            {% if button == "5" %}
+              {{ 0 - dim_step }}
+            {% else %}
+              {{ dim_step }}
+            {% endif %}
+
   zha_exec:
     sequence:
+      - service: system_log.write
+        data_template:
+          message: "{{ command }} - {{ dim_step }}"
       - service_template: >-
           {%- if command == "toggle" %}
             script.zha_remote_short_press_power
@@ -53,6 +118,7 @@ script:
             {% else %}
               {{ color_step }}
             {% endif %}
+
   zha_remote_short_press_power:
     sequence:
       - service: light.toggle
@@ -61,6 +127,15 @@ script:
 
   zha_remote_short_press_dim:
     sequence:
+      # - service: system_log.write
+      #   data_template:
+      #     message: >-
+      #       {% set ds = ( dim_step | int ) * 2 %}
+      #       {%- if ds < 0 %}
+      #         {{ [ state_attr(light, 'brightness') + ds, 1 ] | max }} - {{ light }} | {{ dim_step }}
+      #       {%- else %}
+      #         {{ [ state_attr(light, 'brightness') + ds, 254 ] | min }} - {{ light }} | {{ dim_step }}
+      #       {%- endif %}
       - service: light.turn_on
         data_template:
           entity_id: "{{ light }}"
@@ -71,13 +146,15 @@ script:
             {%- else %}
               {{ [ state_attr(light, 'brightness') + ds, 254 ] | min }}
             {%- endif %}
-          transition: 0.5
 
   zha_remote_long_press_dim:
     sequence:
       - repeat:
           while: []
           sequence:
+            - service: system_log.write
+              data:
+                message: "zha_remote_long_press_dim"
             - service: light.turn_on
               data_template:
                 entity_id: "{{ light }}"
@@ -88,9 +165,6 @@ script:
                   {%- else %}
                     {{ [ state_attr(light, 'brightness') + ds, 254 ] | min }}
                   {%- endif %}
-                transition: 0.5
-            - delay:
-                milliseconds: 500
 
   zha_remote_short_press_color:
     sequence:
@@ -104,7 +178,6 @@ script:
             {%- else %}
               {{ [ state_attr(light, 'color_temp') + cs, state_attr(light, 'max_mireds') ] | min }}
             {%- endif %}
-          transition: 0.5
 
   zha_remote_long_press_color:
     sequence:
@@ -121,9 +194,6 @@ script:
                   {%- else %}
                     {{ [ state_attr(light, 'color_temp') + cs, state_attr(light, 'max_mireds') ] | min }}
                   {%- endif %}
-                transition: 0.5
-            - delay:
-                milliseconds: 500
 
   zha_remote_long_press_power:
     sequence:
