@@ -1,0 +1,78 @@
+shutdown:
+  alias: leaving
+  sequence:
+   - service: light.turn_on
+     entity_id:
+       - light.hallway_lights
+     data:
+        brightness: 200
+        color_temp: 339
+
+   - service: light.turn_on
+     entity_id:
+      - light.l_rgb_0
+      - light.l_rgb_1
+      - light.l_rgb_2
+     data:
+        brightness: 250
+
+   - service: light.turn_off
+     entity_id:
+      - light.livingroom_spots_beam
+      - light.livingroom_spots_main
+      - light.globe
+      - light.bedroom_lights
+      - light.dresser_light
+      - light.dresser_lamp
+      - light.bathroom_lights
+      - light.shelly1_0
+      - light.kitchen_counter
+
+   - service: media_player.turn_off
+     entity_id:
+      - media_player.living_room_speaker
+      - media_player.bedroom_speaker
+      - media_player.bathroom_speaker
+      - media_player.kitchen_speaker
+      - media_player.living_room_tv
+
+   - delay: '00:00:05'
+   - service: light.turn_off
+     entity_id: light.h8
+
+   - delay: '00:00:05'
+   - service: light.turn_off
+     entity_id: light.h7
+
+   - delay: '00:00:05'
+   - service: light.turn_off
+     entity_id:
+     - light.h6
+     - light.h1
+
+   - delay: '00:00:05'
+   - service: light.turn_off
+     entity_id:
+     - light.h5
+     - light.h2
+
+   - delay: '00:00:05'
+   - service: light.turn_on
+     entity_id:
+     - light.h4
+     - light.h3
+     - light.l_rgb_0
+     - light.l_rgb_1
+     - light.l_rgb_2
+     data:
+        brightness: 100
+
+   - delay: '00:00:10'
+   - service: light.turn_off
+     entity_id:
+     - light.h4
+     - light.h3
+     - light.l_rgb_0
+     - light.l_rgb_1
+     - light.l_rgb_2
+
