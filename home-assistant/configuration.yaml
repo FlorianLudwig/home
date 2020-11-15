@@ -81,6 +81,13 @@ sensor:
 
   - platform: miflora
     mac: !secret mac_miflora
+
+  - platform: systemmonitor
+    resources:
+      - type: processor_use
+      - type: memory_free
+      - type: processor_temperature
+      - type: load_1m
 device_tracker:
   - platform: google_maps
     username: !secret google_maps_username
@@ -107,12 +114,10 @@ recorder:
       - updater
 
     entities:
-      - sensor.o2_homebox_2_6741_packets_sec_sent
-      - sensor.o2_homebox_2_6741_packets_sec_received
-      - sensor.o2_homebox_2_6741_bytes_sent
-      - sensor.o2_homebox_2_6741_packets_sent
-      - sensor.o2_homebox_2_6741_bytes_received
-      - sensor.o2_homebox_2_6741_packets_received
+      - sensor.memory_free
+      - sensor.processor_use
+      - sensor.load_1m
+      - sensor.processor_temperature
 
 
 
