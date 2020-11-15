@@ -66,6 +66,15 @@ notify:
 media_player:
 
 
+influxdb:
+  host: a0d7b954-influxdb
+  port: 8086
+  database: homeassistant
+  username: homeassistant
+  password: !secret local_influx_password
+  max_retries: 3
+  default_measurement: state
+
 sensor:
   - platform: rpi_power
     text_state: true
