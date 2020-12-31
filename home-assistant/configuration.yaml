@@ -105,14 +105,19 @@ tradfri:
 
 
 recorder:
-  purge_keep_days: 7
-  purge_interval: 1
+  # stats are keept with influxdb
+  purge_keep_days: 3
+  commit_interval: 3
   exclude:
     domains:
       - sun
       - media_player
       - updater
-
+      - device_tracker
+    entity_globs:
+      - sensor.power_*
+      - sensor.consumption_*
+      - sensor.florian_pixel_*
     entities:
       - sensor.memory_free
       - sensor.processor_use
