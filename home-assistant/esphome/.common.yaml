@@ -1,0 +1,16 @@
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+  ap:
+    ssid: "${devicename}.help"
+    password: !secret fallback_password
+
+
+# fallback when unable to connect to wifi
+captive_portal:
+
+# Enable logging
+logger:
+
